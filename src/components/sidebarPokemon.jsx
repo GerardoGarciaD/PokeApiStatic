@@ -1,97 +1,50 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPokemonSidebar } from '../features/pokeAPI/pokemonSlice';
+import { getPokemonsPagination } from '../utilities/getPokemons';
 
 const SidebarPokemon = () => {
-  return (
-    <div className="flex items-center p-10 ">
-      <ul className="w-full">
-        <li className="flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg ">
-          <p>Bulbasaur</p>
-          <img className="h-7" src="pokeball.png" alt="pokeball" />
-        </li>
-        <li className="flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg">
-          <p>Ivysaur</p>
-          <img className="h-7" src="pokeball.png" alt="pokeball" />
-        </li>
-        <li className="flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg">
-          <p>Venusaur</p>
-          <img className="h-7" src="pokeball.png" alt="pokeball" />
-        </li>
-        <li className="flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg">
-          <p>Bulbasaur</p>
-          <img className="h-7" src="pokeball.png" alt="pokeball" />
-        </li>
-        <li className="flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg">
-          <p>Ivysaur</p>
-          <img className="h-7" src="pokeball.png" alt="pokeball" />
-        </li>
-        <li className="flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg">
-          <p>Venusaur</p>
-          <img className="h-7" src="pokeball.png" alt="pokeball" />
-        </li>
-        <li className="flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg">
-          <p>Bulbasaur</p>
-          <img className="h-7" src="pokeball.png" alt="pokeball" />
-        </li>
-        <li className="flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg">
-          <p>Ivysaur</p>
-          <img className="h-7" src="pokeball.png" alt="pokeball" />
-        </li>
-        <li className="flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg">
-          <p>Venusaur</p>
-          <img className="h-7" src="pokeball.png" alt="pokeball" />
-        </li>
+  const { pokemons, offset } = useSelector((state) => state.pokemons);
+  const dispatch = useDispatch();
+  const handleClick = (pokemonName, pokemonUrl) => {
+    const pokemonId = pokemonUrl.split('/')[6];
+    dispatch(setPokemonSidebar(pokemonId));
+  };
 
-        <li className="flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg">
-          <p>Bulbasaur</p>
-          <img className="h-7" src="pokeball.png" alt="pokeball" />
-        </li>
-        <li className="flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg">
-          <p>Ivysaur</p>
-          <img className="h-7" src="pokeball.png" alt="pokeball" />
-        </li>
-        <li className="flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg">
-          <p>Venusaur</p>
-          <img className="h-7" src="pokeball.png" alt="pokeball" />
-        </li>
-        <li className="flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg">
-          <p>Bulbasaur</p>
-          <img className="h-7" src="pokeball.png" alt="pokeball" />
-        </li>
-        <li className="flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg">
-          <p>Ivysaur</p>
-          <img className="h-7" src="pokeball.png" alt="pokeball" />
-        </li>
-        <li className="flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg">
-          <p>Venusaur</p>
-          <img className="h-7" src="pokeball.png" alt="pokeball" />
-        </li>
-        <li className="flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg">
-          <p>Bulbasaur</p>
-          <img className="h-7" src="pokeball.png" alt="pokeball" />
-        </li>
-        <li className="flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg">
-          <p>Ivysaur</p>
-          <img className="h-7" src="pokeball.png" alt="pokeball" />
-        </li>
-        <li className="flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg">
-          <p>Ivysaur</p>
-          <img className="h-7" src="pokeball.png" alt="pokeball" />
-        </li>
-        <li className="flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg">
-          <p>Ivysaur</p>
-          <img className="h-7" src="pokeball.png" alt="pokeball" />
-        </li>
-        <li className="flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg">
-          <p>Ivysaur</p>
-          <img className="h-7" src="pokeball.png" alt="pokeball" />
-        </li>
+  const handlePrevPage = () => {
+    dispatch(getPokemonsPagination(offset - 20));
+  };
+
+  const handleNextPage = () => {
+    dispatch(getPokemonsPagination(offset + 20));
+  };
+  return (
+    <div className="flex items-center p-10   ">
+      <ul className="w-full max-h-screen ">
+        {pokemons.map((pokemon) => (
+          <li
+            key={pokemon.name}
+            onClick={() => handleClick(pokemon.name, pokemon.url)}
+            className="flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg "
+          >
+            <p className="capitalize">{pokemon.name}</p>
+            <img className="h-7" src="pokeball.png" alt="pokeball" />
+          </li>
+        ))}
         <li className="flex justify-between items-center mt-4 mx-2">
-          <p className="bg-slate-200 p-2 rounded-md shadow-md  hover:cursor-pointer hover:shadow-lg ">
+          <button
+            disabled={!offset}
+            onClick={handlePrevPage}
+            className="bg-slate-200 p-2 rounded-md shadow-md  hover:cursor-pointer hover:shadow-lg"
+          >
             Previous
-          </p>
-          <p className="bg-slate-200 p-2 rounded-md shadow-md  hover:cursor-pointer hover:shadow-lg ">
+          </button>
+          <button
+            onClick={handleNextPage}
+            className="bg-slate-200 p-2 rounded-md shadow-md  hover:cursor-pointer hover:shadow-lg "
+          >
             Next
-          </p>
+          </button>
         </li>
       </ul>
     </div>

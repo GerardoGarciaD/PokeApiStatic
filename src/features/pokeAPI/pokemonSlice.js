@@ -1,7 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  allPokemons: [],
+  pokemons: [],
+  offset: 0,
+  pokemonInfo: {},
+  pokemonSidebar: '',
 };
 
 export const pokemonSlice = createSlice({
@@ -9,10 +12,16 @@ export const pokemonSlice = createSlice({
   initialState,
   reducers: {
     getPokemons: (state, action) => {
-      state.allPokemons.push(action.payload);
+      const { pokemons, offset } = action.payload;
+      state.pokemons = [];
+      state.offset = offset;
+      state.pokemons.push(...pokemons);
+    },
+    setPokemonSidebar: (state, action) => {
+      state.pokemonSidebar = action.payload;
     },
   },
 });
 
-export const { getPokemons } = pokemonSlice.actions;
+export const { getPokemons, setPokemonSidebar } = pokemonSlice.actions;
 export default pokemonSlice.reducer;
