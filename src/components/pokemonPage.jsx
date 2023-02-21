@@ -36,7 +36,7 @@ const statsNames = {
 const PokemonPage = () => {
   const {
     selectedPokemon: { id },
-    pokemonInfo: { stats, types },
+    pokemonInfo: { stats, types, weight, height, abilities },
   } = useSelector((state) => state.pokemons);
   const { name: pokemonName } = useParams();
   const typePokemonColors = types.map((type) => ({
@@ -70,7 +70,7 @@ const PokemonPage = () => {
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`}
               alt={pokemonName}
             />
-            <p className="font-bold text-xl mb-2 capitalize mt-4">
+            <p className="font-bold text-xl mb-2 capitalize mt-4 text-gray-600">
               {pokemonName}
             </p>
           </div>
@@ -108,6 +108,27 @@ const PokemonPage = () => {
                   </div>
                 </div>
               </div>
+            ))}
+          </div>
+          <div className="px-6 pb-3 flex justify-between">
+            <p className="font-semibold" style={{ color: mainType.color }}>
+              Weight: <span className="text-gray-600 "> {weight}</span>
+            </p>
+            <p className="font-semibold" style={{ color: mainType.color }}>
+              Height: <span className="text-gray-600 "> {height}</span>
+            </p>
+          </div>
+          <p
+            className="px-6 pb-3 text-center font-semibold"
+            style={{ color: mainType.color }}
+          >
+            Abilities
+          </p>
+          <div className="px-6 pb-4 grid grid-cols-2">
+            {abilities.map((ability) => (
+              <p className="text-center font-semibold capitalize text-gray-600">
+                {ability.name}
+              </p>
             ))}
           </div>
         </div>

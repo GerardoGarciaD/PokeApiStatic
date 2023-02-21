@@ -28,5 +28,11 @@ const formatPokemon = (fullPokemon) => {
     return { name: type.type.name };
   });
 
-  return { stats, types };
+  const abilities = fullPokemon.abilities.map((ability) => {
+    return {
+      name: ability.ability.name,
+    };
+  });
+  const { weight, height } = fullPokemon;
+  return { stats, types, weight, height, abilities };
 };
