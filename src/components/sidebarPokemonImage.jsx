@@ -12,7 +12,7 @@ const SidebarPokemonImage = () => {
     <div className="p-10 flex flex-col justify-evenly items-center ">
       <img
         onClick={handleClick}
-        className="hover:cursor-pointer self-center"
+        className="hover:cursor-pointer"
         src="pokeapi.png"
         alt="Logo"
       />

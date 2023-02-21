@@ -42,7 +42,7 @@ const PokemonPage = () => {
             width: '45%',
             maxWidth: '400px',
           }}
-          className="rounded-lg overflow-hidden shadow-lg"
+          className="rounded-lg shadow-lg"
         >
           <div className="flex flex-col items-center p-3">
             <p className="self-end px-4 py-2  bg-white rounded-full font-semibold">

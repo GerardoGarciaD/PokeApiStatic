@@ -31,7 +31,7 @@ const SidebarPokemon = () => {
   };
   return (
     <div className="flex items-center p-10">
-      <ul className="w-full max-h-[80vh] overflow-y-auto">
+      <ul className="w-full max-h-[80vh] overflow-y-auto scrollbar">
         {pokemons.map((pokemon) => (
           <li
             key={pokemon.name}
@@ -47,7 +47,7 @@ const SidebarPokemon = () => {
           </li>
         ))}
 
-        <li className="flex justify-between items-center mt-4 mx-2">
+        <li className="flex justify-between items-center my-4 mx-2">
           <button
             disabled={!offset}
             onClick={handlePrevPage}
