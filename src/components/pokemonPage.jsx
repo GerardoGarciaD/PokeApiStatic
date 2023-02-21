@@ -63,6 +63,9 @@ const PokemonPage = () => {
           className="rounded-lg overflow-hidden shadow-lg"
         >
           <div className="flex flex-col items-center p-3">
+            <p className="self-end px-4 py-2  bg-white rounded-full font-semibold">
+              # {id}
+            </p>
             <img
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`}
               alt={pokemonName}
