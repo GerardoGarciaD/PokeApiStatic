@@ -31,8 +31,8 @@ const SidebarPokemon = () => {
   };
   return (
     <div className="flex items-center p-10">
-      <ul className="w-full max-h-screen ">
-        {pokemons.map((pokemon, index) => (
+      <ul className="w-full max-h-[80vh] overflow-y-auto">
+        {pokemons.map((pokemon) => (
           <li
             key={pokemon.name}
             onClick={(event) => handleClick(event, pokemon.name, pokemon.url)}
@@ -46,6 +46,7 @@ const SidebarPokemon = () => {
             <img className="h-7" src="pokeball.png" alt="pokeball" />
           </li>
         ))}
+
         <li className="flex justify-between items-center mt-4 mx-2">
           <button
             disabled={!offset}

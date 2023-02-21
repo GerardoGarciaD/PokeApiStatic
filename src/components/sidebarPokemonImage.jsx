@@ -12,14 +12,14 @@ const SidebarPokemonImage = () => {
     <div className="p-10 flex flex-col justify-evenly items-center ">
       <img
         onClick={handleClick}
-        className="max-w-fit hover:cursor-pointer"
+        className="hover:cursor-pointer self-center"
         src="pokeapi.png"
         alt="Logo"
       />
       {id && (
         <img
-          className="max-w-fit"
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`}
+          style={{ width: '40%' }}
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`}
           alt="PokemonImage"
         />
       )}

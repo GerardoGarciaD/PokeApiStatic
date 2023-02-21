@@ -1,37 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import styles from '../styles/pokemonCard.module.css';
-
-const typeColors = {
-  rock: '#b69e31',
-  ghost: '#70559b',
-  steel: '#b7b9d0',
-  water: '#6493eb',
-  grass: '#74cb48',
-  psychic: '#fb5584',
-  ice: '#9ad6df',
-  dark: '#75574c',
-  fairy: '#e69eac',
-  normal: '#aaa67f',
-  fighting: '#c12239',
-  flying: '#a891ec',
-  poison: '#a43e9e',
-  ground: '#dec16b',
-  bug: '#a7b723',
-  fire: '#f57d31',
-  electric: '#f9cf30',
-  dragon: '#7037ff',
-};
-
-const statsNames = {
-  hp: 'HP',
-  attack: 'ATK',
-  defense: 'DEF',
-  specialattack: 'SATK',
-  specialdefense: 'SDEF',
-  speed: 'SPD',
-};
+import { typeColors } from '../constants/pokemon';
+import PokemonStats from './PokemonStats';
+import StatsSize from './StatsSize';
+import Abilities from './Abilities';
 
 const PokemonPage = () => {
   const {
@@ -39,10 +13,18 @@ const PokemonPage = () => {
     pokemonInfo: { stats, types, weight, height, abilities },
   } = useSelector((state) => state.pokemons);
   const { name: pokemonName } = useParams();
+  const navigate = useNavigate();
+
+  if (!id) {
+    navigate('/');
+    return;
+  }
+
   const typePokemonColors = types.map((type) => ({
     name: type.name,
     color: typeColors[type.name],
   }));
+
   const [mainType] = typePokemonColors;
 
   return (
@@ -68,6 +50,7 @@ const PokemonPage = () => {
             </p>
             <img
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`}
+              style={{ width: '80%', maxHeight: '250px' }}
               alt={pokemonName}
             />
             <p className="font-bold text-xl mb-2 capitalize mt-4 text-gray-600">
@@ -86,51 +69,30 @@ const PokemonPage = () => {
               </span>
             ))}
           </div>
-          <div className="p-6">
-            {stats.map((stat) => (
-              <div key={stat.name} className="stat-row flex justify-center ">
-                <div
-                  className={styles['stat-desc']}
-                  style={{ color: mainType.color }}
-                >
-                  {statsNames[stat.name]}
-                </div>
-                <p className={styles['stat-number']}>{stat.base_stat}</p>
-                <div className={styles['stat-bar']}>
-                  <div className={styles['bar-outer']}>
-                    <p
-                      className={styles['bar-inner']}
-                      style={{
-                        width: `${stat.base_stat}%`,
-                        backgroundColor: mainType.color,
-                      }}
-                    ></p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+
+          <PokemonStats stats={stats} mainType={mainType}></PokemonStats>
+
           <div className="px-6 pb-3 flex justify-between">
-            <p className="font-semibold" style={{ color: mainType.color }}>
-              Weight: <span className="text-gray-600 "> {weight}</span>
-            </p>
-            <p className="font-semibold" style={{ color: mainType.color }}>
-              Height: <span className="text-gray-600 "> {height}</span>
-            </p>
+            <StatsSize
+              title="weight"
+              value={weight}
+              mainType={mainType}
+            ></StatsSize>
+
+            <StatsSize
+              title="weight"
+              value={height}
+              mainType={mainType}
+            ></StatsSize>
           </div>
+
           <p
-            className="px-6 pb-3 text-center font-semibold"
+            className="px-6 pb-4 text-center font-semibold"
             style={{ color: mainType.color }}
           >
             Abilities
           </p>
-          <div className="px-6 pb-4 grid grid-cols-2">
-            {abilities.map((ability) => (
-              <p className="text-center font-semibold capitalize text-gray-600">
-                {ability.name}
-              </p>
-            ))}
-          </div>
+          <Abilities abilities={abilities}></Abilities>
         </div>
       </div>
     </div>
