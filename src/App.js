@@ -11,7 +11,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPokemonsPagination());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="bg-slate-200">
