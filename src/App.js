@@ -1,5 +1,5 @@
 import './App.css';
-import SidebarPokemonImage from './components/SidebarPokemonImage';
+import SidebarPokemonImage from './SidebarPokemonImage';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getPokemonsPagination } from './utils/getPokemons';
