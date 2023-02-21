@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="bg-slate-200">
-      <div className="min-h-screen min-w-full grid grid-cols-2 gap-3 ">
+      <div className="min-h-screen min-w-full  md:grid md:grid-cols-2 md:gap-3 ">
         <SidebarPokemonImage></SidebarPokemonImage>
 
         <Routes>

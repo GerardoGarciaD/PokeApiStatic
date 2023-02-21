@@ -13,7 +13,7 @@ const SidebarPokemonImage = () => {
       <img
         onClick={handleClick}
         className="hover:cursor-pointer"
-        src="pokeapi.png"
+        src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"
         alt="Logo"
       />
       {id && (
