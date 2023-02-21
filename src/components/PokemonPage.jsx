@@ -38,7 +38,7 @@ const PokemonPage = () => {
         <div
           style={{
             background: `radial-gradient(circle at 50% 0%, ${mainType.color} 36%, #ffffff 36%)`,
-            width: '45%',
+            width: '70%',
             maxWidth: '400px',
           }}
           className="rounded-lg shadow-lg"
