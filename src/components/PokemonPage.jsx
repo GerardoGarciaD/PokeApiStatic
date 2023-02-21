@@ -27,7 +27,7 @@ const PokemonPage = () => {
   const [mainType] = typePokemonColors;
 
   return (
-    <div className="flex flex-col justify-center">
+    <div className="flex flex-col justify-center pb-4 md:pb-0">
       <Link
         to="/"
         className="self-center max-w-xs bg-slate-200 p-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg mb-10"
