@@ -79,7 +79,7 @@ const PokemonPage = () => {
             ></StatsSize>
 
             <StatsSize
-              title="weight"
+              title="height"
               value={height}
               mainType={mainType}
             ></StatsSize>
