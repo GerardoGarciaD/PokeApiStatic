@@ -4,7 +4,10 @@ const initialState = {
   pokemons: [],
   offset: 0,
   pokemonInfo: {},
-  pokemonSidebar: '',
+  selectedPokemon: {
+    id: '',
+    name: '',
+  },
 };
 
 export const pokemonSlice = createSlice({
@@ -17,11 +20,15 @@ export const pokemonSlice = createSlice({
       state.offset = offset;
       state.pokemons.push(...pokemons);
     },
-    setPokemonSidebar: (state, action) => {
-      state.pokemonSidebar = action.payload;
+    setSelectedPokemon: (state, action) => {
+      state.selectedPokemon = action.payload;
+    },
+    getPokemon: (state, action) => {
+      state.pokemonInfo = action.payload;
     },
   },
 });
 
-export const { getPokemons, setPokemonSidebar } = pokemonSlice.actions;
+export const { getPokemons, setSelectedPokemon, getPokemon } =
+  pokemonSlice.actions;
 export default pokemonSlice.reducer;

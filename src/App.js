@@ -1,9 +1,9 @@
 import './App.css';
 import SidebarPokemonImage from './components/sidebarPokemonImage';
 import SidebarPokemon from './components/sidebarPokemon';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { getPokemonsPagination } from './utilities/getPokemons';
+import { getPokemonsPagination } from './utils/getPokemons';
 import { Route, Routes } from 'react-router-dom';
 import PokemonPage from './components/pokemonPage';
 

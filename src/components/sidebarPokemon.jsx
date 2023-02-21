@@ -1,14 +1,25 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setPokemonSidebar } from '../features/pokeAPI/pokemonSlice';
-import { getPokemonsPagination } from '../utilities/getPokemons';
+import { setSelectedPokemon } from '../features/pokeAPI/pokemonSlice';
+import { getFullPokemon, getPokemonsPagination } from '../utils/getPokemons';
+import { useNavigate } from 'react-router-dom';
 
 const SidebarPokemon = () => {
-  const { pokemons, offset } = useSelector((state) => state.pokemons);
+  const {
+    pokemons,
+    offset,
+    selectedPokemon: { name },
+  } = useSelector((state) => state.pokemons);
   const dispatch = useDispatch();
-  const handleClick = (pokemonName, pokemonUrl) => {
+  const navigate = useNavigate();
+
+  const handleClick = (event, pokemonName, pokemonUrl) => {
+    if (event.detail === 2) {
+      navigate(`/pokemon/${pokemonName}`);
+    }
     const pokemonId = pokemonUrl.split('/')[6];
-    dispatch(setPokemonSidebar(pokemonId));
+    dispatch(getFullPokemon(pokemonName));
+    dispatch(setSelectedPokemon({ id: pokemonId, name: pokemonName }));
   };
 
   const handlePrevPage = () => {
@@ -19,13 +30,17 @@ const SidebarPokemon = () => {
     dispatch(getPokemonsPagination(offset + 20));
   };
   return (
-    <div className="flex items-center p-10   ">
+    <div className="flex items-center p-10">
       <ul className="w-full max-h-screen ">
-        {pokemons.map((pokemon) => (
+        {pokemons.map((pokemon, index) => (
           <li
             key={pokemon.name}
-            onClick={() => handleClick(pokemon.name, pokemon.url)}
-            className="flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg "
+            onClick={(event) => handleClick(event, pokemon.name, pokemon.url)}
+            className={`flex justify-between items-center bg-slate-200 px-3 py-2 m-2 rounded-md shadow-md hover:cursor-pointer hover:shadow-lg ${
+              name === pokemon.name
+                ? 'shadow-[#3466AF] hover:shadow-[#3466AF]'
+                : ''
+            }`}
           >
             <p className="capitalize">{pokemon.name}</p>
             <img className="h-7" src="pokeball.png" alt="pokeball" />
@@ -35,13 +50,15 @@ const SidebarPokemon = () => {
           <button
             disabled={!offset}
             onClick={handlePrevPage}
-            className="bg-slate-200 p-2 rounded-md shadow-md  hover:cursor-pointer hover:shadow-lg"
+            className={`bg-slate-200 p-2 rounded-md shadow-md ${
+              offset && 'hover:cursor-pointer hover:shadow-xl'
+            } `}
           >
             Previous
           </button>
           <button
             onClick={handleNextPage}
-            className="bg-slate-200 p-2 rounded-md shadow-md  hover:cursor-pointer hover:shadow-lg "
+            className="bg-slate-200 p-2 rounded-md shadow-md  hover:cursor-pointer hover:shadow-xl"
           >
             Next
           </button>
