@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getPokemonsPagination } from './utils/getPokemons';
 import { Route, Routes } from 'react-router-dom';
-import SidebarPokemon from './components/SidebarPokemon';
 import PokemonPage from './components/PokemonPage';
 function App() {
   const dispatch = useDispatch();
