@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import styles from '../styles/pokemonCard.module.css';
 import { typeColors } from '../constants/pokemon';
 import PokemonStats from './PokemonStats';
 import StatsSize from './StatsSize';
